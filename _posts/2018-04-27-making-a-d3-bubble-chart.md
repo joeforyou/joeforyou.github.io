@@ -15,7 +15,7 @@ I’ve been wanting to learn more D3.js so I decided to start by looking at [one
 
 Mostly, bubble charts can lead to very misleading representations of data. But after playing around with Vallandingham’s viz, I wanted to apply it to my *Office* dataset. The first thing I wanted to ask&mdash;who speaks the most? Michael Scott is the boss of Dunder Mifflin. He obviously has a lot of lines throughout the show, but who else has the most dialogue? Is it consistent across the seasons of the show? The second thing I wanted to know&mdash;what were the top words characters used? Will "tuna" show up as Andy's favorite word?
 
-![The Office bubbles grouped by character]({{ "assets/office-bubbles.png" | absolute_url }})
+![The Office bubbles grouped by character]({{ "assets/office-character-bubbles.png" | absolute_url }})
 {:.image-caption}
 *Bubble size corresponds to the number of lines a character has per season.*
 
@@ -52,6 +52,7 @@ D3 is new to me. I’ve been finding the prospect of starting a D3 viz from scra
 When I found the Gates viz, I figured *The Office* dataset would be a nice little fork of the project. And I could experiment with the grouping function Vallandingham set up&mdash;instead of grouping by year, I’d group by season. If I could do that, I’d try to group by some other parameter&mdash;perhaps by main character. And if all that looked okay, I’d do some more data preparation and make a bar chart of a character’s word frequency appear for a particular season.
 
 But let’s not get overly ambitious. All I wanted to do was see bubbles appear for various characters in *The Office*. Start small.
+
 To start, I cloned Vallandingham’s GitHub repository and fired up my [http-server](https://www.npmjs.com/package/http-server
 ):
 
