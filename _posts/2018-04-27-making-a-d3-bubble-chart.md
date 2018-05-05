@@ -5,7 +5,7 @@ date: 2018-04-27
 ---
 
 * [The Office Text Analysis](http://joeforyou.github.io/office-text-analysis)
-* [Main GitHub Repo](https://github.com/joeforyou/office-text-analysis)
+* [Main GitHub repository](https://github.com/joeforyou/office-text-analysis)
 * [Data preparation and cleaning GitHub repository](https://github.com/joeforyou/office-data-prep)
 
 [/r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/) holds a monthly data visualization battle. For April 2018, the dataset was every line of dialogue in the American version of the TV show *The Office*.
