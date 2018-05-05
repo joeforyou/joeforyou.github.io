@@ -1,21 +1,19 @@
 ---
 layout: post
-title: "Making a D3.js bubble chart to visualize lines of dialogue in *The Office* (U.S.)"
+title: "Making a D3.js bubble chart to visualize lines of dialogue in The Office (U.S.)"
 date: 2018-04-27
 ---
+
+* [The Office Text Analysis](http://joeforyou.github.io/office-text-analysis)
+* [Main GitHub Repo](https://github.com/joeforyou/office-text-analysis)
+* [Data preparation and cleaning GitHub repository](https://github.com/joeforyou/office-data-prep)
 
 [/r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/) holds a monthly data visualization battle. For April 2018, the dataset was every line of dialogue in the American version of the TV show *The Office*.
 
 I’ve been wanting to learn more D3.js so I decided to start by looking at [one of the visualizations featured in the D3.js gallery](https://github.com/d3/d3/wiki/Gallery). Jim Vallandingham created [this fun viz for the Gates Foundation’s spending](http://vallandingham.me/vis/gates/). While it's true that [Bubble charts are not really the best way to visualize data for a variety of reasons](http://junkcharts.typepad.com/junk_charts/2013/03/blowing-the-whistle-at-bubble-charts.html
 ), I think this visualization is engaging from a UX standpoint.
 
-Mostly, bubble charts can lead to very misleading representations of data. But after playing around with Vallandingham’s viz, I wanted to apply it to my Office dataset. 
-
-The first thing I wanted to ask&mdash;who speaks the most? Michael Scott is the boss of Dunder Mifflin. He obviously has a lot of lines throughout the show, but who else has the most dialogue? Is it consistent across the seasons of the show?
-
-The second thing I wanted to know&mdash;what were the top words characters used? Will "tuna" show up as Andy's favorite word?
-
-[Here's what I eventually came up with](https://joeforyou.github.io/office-text-analysis).
+Mostly, bubble charts can lead to very misleading representations of data. But after playing around with Vallandingham’s viz, I wanted to apply it to my *Office* dataset. The first thing I wanted to ask&mdash;who speaks the most? Michael Scott is the boss of Dunder Mifflin. He obviously has a lot of lines throughout the show, but who else has the most dialogue? Is it consistent across the seasons of the show? The second thing I wanted to know&mdash;what were the top words characters used? Will "tuna" show up as Andy's favorite word?
 
 ![The Office bubbles grouped by character]({{ "assets/office-bubbles.png" | absolute_url }})
 {:.image-caption}
@@ -23,7 +21,7 @@ The second thing I wanted to know&mdash;what were the top words characters used?
 
 I wanted to perform exploratory data analysis to start. [I used Python's pandas library and Jupyter notebooks](https://github.com/joeforyou/office-data-prep).
 
-##EDA and cleaning the data with pandas
+## EDA and cleaning the data with pandas
 
 I started with “the-office-lines.csv” file.  Every line is represented as a row of data in this CSV file. Each line has an ID, season, episode, scene, text, speaker, and an indication (“True” or “False”) of whether or not the line is part of a deleted scene.
 
@@ -47,7 +45,7 @@ s.to_csv('the-office-counts-by-season.csv')
 
 I export the newly cleaned-up DataFrame and I’m ready to work with the data in D3.
 
-##Merging the data into D3
+## Merging the data into D3
 
 D3 is new to me. I’ve been finding the prospect of starting a D3 viz from scratch very daunting so I’ve been admiring the vast [D3 gallery](https://github.com/d3/d3/wiki/Gallery) and tinkering around with [Mike Bostock’s blocks](https://bl.ocks.org/mbostock)in trying to make some stabs at understanding how it works.
 
@@ -103,6 +101,7 @@ Here, the radius of each node is defined by the character’s count (number of l
 
 I also changed the `show_details` object prototype of the BubbleChart constructor:
 
+```javascript
    BubbleChart.prototype.show_details = function(data, i, element) {
      var content;
      d3.select(element).attr("stroke", "black");
@@ -111,13 +110,14 @@ I also changed the `show_details` object prototype of the BubbleChart constructo
      content += "<span class=\"name\">Season:</span><span class=\"value\"> " + data.season + "</span>";
      return this.tooltip.showTooltip(content, d3.event);
    };
+```
 
 This way after hovering over a bubble, the character’s name, number of lines spoken, and the season number will appear.
 
-##Wrap-up
+## Wrap-up
 
 This wasn't meant to be an exhaustive tutorial of how to make a BubbleChart in D3.js. If you really want to dive into the mechanics of how this works, I recommend following [Vallandingham's excellent tutorial](http://vallandingham.me/bubble_charts_in_js.html). He walks through the code in a helpful way and gives a good overview of D3's Force Layout feature, something I didn't discuss here. Essentially, there are a ton of attributes you can play around with that govern each bubble's physics.
 
-* [The Office Text Analysis](http://joeforyou.github.io/office-text-analysis)
-* [Main GitHub Repo](https://github.com/joeforyou/office-text-analysis)
-* [EDA GitHub Repo](https://github.com/joeforyou/office-data-prep)
+One of Andy's favorite word *was* tuna
+
+![Andy's top words from season three]({{ "assets/office-andy-words.png" | absolute_url }})
