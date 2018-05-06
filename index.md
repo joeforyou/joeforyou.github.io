@@ -4,4 +4,4 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
-*Web stuff no one asked for.*
+*Web stuff no one asked for since 2018.*
